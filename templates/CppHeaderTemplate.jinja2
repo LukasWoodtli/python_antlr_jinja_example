@@ -1,0 +1,49 @@
+#pragma once
+
+
+% for element in cpp_model.gen_system_includes_from_header():
+{{element}}
+% endfor
+#include "{{cpp_model.name()}}.h"
+% for element in cpp_model.gen_includes():
+{{element}}
+% endfor
+{{ cpp_model.gen_using_declarations() }}
+% for element in cpp_model.gen_forward_declarations():
+{{element}}
+% endfor
+{{ cpp_model.gen_typedefs() }}
+
+
+{{cpp_model.gen_class_declaration()}}
+{
+public:
+    {{ cpp_model.gen_friend_declarations() }}
+	virtual ~{{cpp_model.name()}}();
+
+	static Sp{{cpp_model.name()}} Create{{cpp_model.name()}}();
+
+	{{cpp_model.gen_get_class_name()}}
+
+% if not cpp_model.has_init_method()
+	void init();
+% endif
+
+     {{cpp_model.gen_public_member_variables()}}
+
+% if cpp_model.gen_private_member_variables()
+private:
+% endif
+    {{cpp_model.gen_private_member_variables()}}
+
+protected:
+    {{cpp_model.gen_protected_member_variables()}}
+
+    {{cpp_model.name()}}();
+
+public:
+% for method in cpp_model.gen_cpp_methods():
+{{method}}
+% endfor
+};
+

@@ -1,0 +1,78 @@
+#pragma once
+
+
+#include <string>
+#include <chrono>
+#include "TestExampleClass.h"
+#include "MyOtherTestingClass.h"
+#include "flags/flags.h"
+#include "flags/flags.h"
+#include "BaseTestClass.h"
+using MyFancyFn = std::function<bool(int*)>;
+class date;
+class array;
+class AmisDate;
+class abc::def::foo;
+class flags;
+class Hello;
+class Hallo;
+class World;
+class MyForwardDeclaration;
+typedef std::pair<double, int> MyPair;
+
+
+class TestExampleClass : public BaseTestClass
+{
+public:
+    friend class MyGoodFriend;
+	virtual ~TestExampleClass();
+
+	static SpTestExampleClass CreateTestExampleClass();
+
+	virtual std::string className() const override {return "TestExampleClass";}
+
+	void init();
+       Hello* hello ;  double someBool ;  BigThing reallyBig ;
+
+    
+
+protected:
+    
+
+    TestExampleClass();
+
+public:
+	virtual int createArray(
+		const date& theDate,
+	                                    const date& otherDate,
+	                                    long int hello,
+	                                    array* theArray) ;
+
+	virtual Nowrapper int getArray(
+		const date* theDate,
+	                                  const AmisDate* otherDate,
+	                                  array* theArray,
+	                                  long int type = 0,
+	                                  date* oneMoreDate = nullptr,
+	                                  bool aBoolean= false) ;
+
+	virtual int getSomething(
+		array* theArray) ;
+
+	virtual double getSomethingElse(
+		int i = C42) ;
+
+	virtual const abc::def::foo& getFancyThing() const  ;
+
+	static  long int getMoreStuff(
+		bool theBool) ;
+
+	virtual flags flags() const  ;
+
+	virtual void setFlags(
+		const flags& f) ;
+
+	virtual bool isFSomethingTrue() ;
+
+};
+
